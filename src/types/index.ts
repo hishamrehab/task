@@ -106,3 +106,14 @@ export interface UserEngagementProps {
     inactiveUsers: number;
     avgOrdersPerUser: number;
 }
+
+export interface UserWithStats extends User {
+    totalOrders: number;
+    totalRevenue: number;
+    avgOrderValue: number;
+    role: string;
+}
+
+export interface UsersPageProps {
+
+}

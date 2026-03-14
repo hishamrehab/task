@@ -1,7 +1,7 @@
 import { Route, Routes, BrowserRouter } from 'react-router';
 import DashboardLayout from './components/DashboardLayout';
 import DashboardPage from './pages/DashboardPage';
-// import UsersPage from './pages/UsersPage'; 
+import UsersPage from './pages/UsersPage';
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<DashboardLayout />}>
           <Route index element={<DashboardPage />} />
-          {/* <Route path="users" element={<UsersPage />} /> */}
+          <Route path="users" element={<UsersPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
