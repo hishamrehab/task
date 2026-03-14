@@ -45,7 +45,7 @@ const StatsCard = ({ title, value, growth, icon, color, strokeColor }: StatsCard
 
     return (
         <Card
-            className={`rounded-2xl p-5 hover:-translate-y-0.5 transition-all duration-300 group overflow-hidden relative border ${colorMap[color]} shadow-sm`}
+            className={`rounded-2xl p-5 hover:-translate-y-0.5 transition-all duration-300 group overflow-hidden relative border ${colorMap[color]} shadow-sm dark:bg-slate-800/60 border-gray-100 dark:border-white/6 `}
         >
             <div className="relative">
                 <div className="flex items-start justify-between mb-4">

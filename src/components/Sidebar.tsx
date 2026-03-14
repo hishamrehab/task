@@ -9,7 +9,7 @@ import {
     MoreHorizontal,
     BarChart2,
 } from "lucide-react"
-import type { SidebarProps } from "../../types"
+import type { SidebarProps } from "../types"
 
 interface NavItemConfig {
     path: string

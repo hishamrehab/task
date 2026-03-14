@@ -11,7 +11,8 @@ import {
     ChevronRight,
     LayoutDashboard,
 } from "lucide-react"
-import type { HeaderProps } from "../../types"
+import type { HeaderProps } from "../types"
+
 
 const Header = ({ toggleSidebar, isCollapsed }: HeaderProps) => {
     const [isDark, setIsDark] = useState(false)
@@ -114,7 +115,6 @@ const Header = ({ toggleSidebar, isCollapsed }: HeaderProps) => {
                         <p className="text-xs font-semibold text-gray-900 dark:text-white leading-tight whitespace-nowrap">Admin User</p>
                         <p className="text-xs text-gray-500 dark:text-slate-500 leading-tight whitespace-nowrap">Super Admin</p>
                     </div>
-                    <ChevronDown className="hidden sm:block w-4 h-4 text-gray-400 dark:text-slate-500 flex-shrink-0" />
                 </div>
             </div>
 

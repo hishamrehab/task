@@ -93,11 +93,16 @@ export interface SidebarProps {
     isOpen: boolean;
     isCollapsed: boolean;
     onClose: () => void;
-    onToggleCollapse: () => void;
-    onMobileMenuToggle: (value: boolean) => void;
 }
 
 export interface HeaderProps {
     toggleSidebar: () => void;
-    isSidebarCollapsed: boolean;
+    isCollapsed: boolean;
+}
+
+
+export interface UserEngagementProps {
+    activeUsers: number;
+    inactiveUsers: number;
+    avgOrdersPerUser: number;
 }

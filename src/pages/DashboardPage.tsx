@@ -1,7 +1,9 @@
+import BottomMetricsGrid from '../components/dashboard/BottomMetricsGrid'
 import DashboardHeader from '../components/dashboard/DashboardHeader'
-import RevenueChart from '../components/dashboard/RevenueChart'
+import RevenueChart from '../components/dashboard/revenue-chart/RevenueChart'
 import StatsGrid from '../components/dashboard/StatsGrid'
-import { Stats } from '../data/dashbaordData'
+import UserEngagement from '../components/dashboard/UserEngagement'
+import { Stats, Metrics } from '../data/dashbaordData'
 
 const DashboardPage = () => {
     return (
@@ -13,8 +15,13 @@ const DashboardPage = () => {
                 <div className="col-span-2">
                     <RevenueChart />
                 </div>
+                <UserEngagement
+                    activeUsers={Stats.activeUsers}
+                    inactiveUsers={Stats.totalUsers - Stats.activeUsers}
+                    avgOrdersPerUser={1.5}
+                />
             </div>
-
+            <BottomMetricsGrid metrics={Metrics} />
         </div>
     )
 }
