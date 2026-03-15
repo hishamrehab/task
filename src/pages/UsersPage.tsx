@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import type { UsersFilters, UserWithStats } from '../types';
 import { getAllOrders, getUsers } from '../lib/fakeApi';
 import { Card } from '../components/ui/card';
@@ -93,6 +94,53 @@ const UsersPage = () => {
         }
     };
 
+    const handleDelete = (user: UserWithStats) => {
+        const isDark = document.documentElement.classList.contains('dark');
+        
+        Swal.fire({
+            title: 'Are you sure?',
+            text: `You are about to delete ${user.name}. This action cannot be undone.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                popup: 'rounded-2xl border border-border shadow-xl !font-sans',
+                title: 'text-xl font-semibold',
+                htmlContainer: 'text-muted-foreground',
+                confirmButton: 'inline-flex items-center justify-center h-10 px-6 py-2 text-sm font-medium bg-red-500 text-white hover:bg-red-600 transition-all rounded-xl mx-2 shadow-sm',
+                cancelButton: 'inline-flex items-center justify-center h-10 px-6 py-2 text-sm font-medium border border-border bg-background text-foreground hover:bg-accent transition-all rounded-xl mx-2',
+                actions: 'mt-6',
+            },
+            buttonsStyling: false,
+            background: isDark ? '#1c1c1c' : '#ffffff',
+            color: isDark ? '#f8fafc' : '#0f172a',
+            iconColor: '#f87171',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setUsers((prevUsers) => prevUsers.filter((u) => u.id !== user.id));
+                if (selectedUser?.id === user.id) {
+                    setModalOpen(false);
+                }
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: `${user.name} has been removed.`,
+                    icon: 'success',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    customClass: {
+                        popup: 'rounded-2xl border border-border shadow-xl !font-sans',
+                        title: 'text-xl font-semibold',
+                        htmlContainer: 'text-muted-foreground',
+                    },
+                    buttonsStyling: false,
+                    background: isDark ? '#1c1c1c' : '#ffffff',
+                    color: isDark ? '#f8fafc' : '#0f172a',
+                    iconColor: '#4ade80',
+                });
+            }
+        });
+    };
 
     return (
         <div className='space-y-6'>
@@ -114,8 +162,9 @@ const UsersPage = () => {
                             users={users}
                             onView={handleView}
                             onEdit={handleEdit}
-
+                            onDelete={handleDelete}
                         />
+
                         {totalPages > 1 && (
                             <Pagination
                                 currentPage={filters.page}
@@ -125,11 +174,19 @@ const UsersPage = () => {
                         )}
                     </div>
                 )}
-            </Card >
+            </Card>
+
             <UserDetailsModal
                 user={selectedUser}
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
+            />
+
+            <EditUserModal
+                user={userToEdit}
+                open={editModalOpen}
+                onOpenChange={setEditModalOpen}
+                onSave={handleSaveEdit}
             />
         </div >
     )
