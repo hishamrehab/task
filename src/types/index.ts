@@ -9,6 +9,7 @@ export interface User {
     email: string;
     status: UserStatus;
     createdAt: string;
+    imgUrl?: string;
 }
 
 export type OrderStatus = 'Pending' | 'Paid' | 'Cancelled' | 'Delivered';
@@ -38,7 +39,6 @@ export interface UsersResponse {
     totalPages: number;
 }
 
-// Dashboard static data types
 export interface DashboardStats {
     totalUsers: number;
     activeUsers: number;
@@ -108,12 +108,9 @@ export interface UserEngagementProps {
 }
 
 export interface UserWithStats extends User {
-    totalOrders: number;
-    totalRevenue: number;
-    avgOrderValue: number;
+    ordersCount: number;
+    totalSpent: number;
     role: string;
 }
 
-export interface UsersPageProps {
-
-}
+export interface UsersPageProps { }

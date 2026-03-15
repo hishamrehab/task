@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { UsersFilters, UserWithStats } from '../types';
 import { getAllOrders, getUsers } from '../lib/fakeApi';
 import { Card } from '../components/ui/card';
 import UserFilters from '../components/users/UserFilters';
 import UsersTable from '../components/users/UsersTable';
 import Pagination from '../components/users/Pagination';
+import UserDetailsModal from '../components/users/UserDetailsModal';
+import EditUserModal from '../components/users/EditUserModal';
 
 const PAGE_SIZE = 10;
 
@@ -21,6 +23,11 @@ const UsersPage = () => {
     const [users, setUsers] = useState<UserWithStats[]>([]);
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [selectedUser, setSelectedUser] = useState<UserWithStats | null>(null);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const [userToEdit, setUserToEdit] = useState<UserWithStats | null>(null);
+    const [editModalOpen, setEditModalOpen] = useState(false);
 
 
     useEffect(() => {
@@ -67,20 +74,29 @@ const UsersPage = () => {
 
 
     const handleView = (user: UserWithStats) => {
-        console.log('View user', user);
+        setSelectedUser(user);
+        setModalOpen(true);
     };
 
     const handleEdit = (user: UserWithStats) => {
-        console.log('Edit user', user);
+        setUserToEdit(user);
+        setEditModalOpen(true);
     };
 
-    const handleDelete = (user: UserWithStats) => {
-        console.log('Delete user', user);
+    const handleSaveEdit = (updatedUser: UserWithStats) => {
+        setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+                (user.id === updatedUser.id ? updatedUser : user)))
+
+        if (selectedUser?.id === updatedUser.id) {
+            setSelectedUser(updatedUser);
+        }
     };
+
 
     return (
         <div className='space-y-6'>
-            <Card className="bg-white rounded-xl p-6 border border-gray-200">
+            <Card className="p-6">
                 <UserFilters
                     search={filters.search}
                     onSearchChange={handleSearchChange}
@@ -89,31 +105,32 @@ const UsersPage = () => {
                 />
 
                 {loading ? (
-                    <div className="flex justify-center py-8">
-                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-teal-500"></div>
+                    <div className="flex justify-center py-12">
+                        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
                     </div>
                 ) : (
-                    <>
+                    <div className="animate-in fade-in duration-500">
                         <UsersTable
                             users={users}
                             onView={handleView}
                             onEdit={handleEdit}
-                            onDelete={handleDelete}
+
                         />
-                        {/* {totalPages > 1 && (
-                            <div className="flex justify-center mt-6">
-                                <Pagination
-                                    currentPage={filters.page}
-                                    totalPages={totalPages}
-                                    onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
-                                />
-                            </div>
-                        )} */}
-
-                    </>
+                        {totalPages > 1 && (
+                            <Pagination
+                                currentPage={filters.page}
+                                totalPages={totalPages}
+                                onPageChange={(page) => setFilters((prev) => ({ ...prev, page }))}
+                            />
+                        )}
+                    </div>
                 )}
-
             </Card >
+            <UserDetailsModal
+                user={selectedUser}
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+            />
         </div >
     )
 }
