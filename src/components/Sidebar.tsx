@@ -22,7 +22,6 @@ const mainNavItems: NavItemConfig[] = [
     { path: "/", icon: LayoutDashboard, label: "Dashboard" },
     { path: "/users", icon: Users, label: "Users", badge: 156 },
     { path: "/orders", icon: ShoppingBag, label: "Orders", badge: 12 },
-    { path: "/analytics", icon: BarChart2, label: "Analytics" },
 ]
 
 const bottomNavItems: NavItemConfig[] = [

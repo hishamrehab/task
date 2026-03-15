@@ -8,9 +8,9 @@ interface PaginationProps {
 
 const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
     return (
-        <div className="flex items-center justify-between mt-6">
-            <p className="text-sm text-gray-500">
-                Page {currentPage} of {totalPages}
+        <div className="flex items-center justify-between mt-6 pt-6 border-t border-border/50">
+            <p className="text-sm text-muted-foreground">
+                Page <span className="font-medium text-foreground">{currentPage}</span> of <span className="font-medium text-foreground">{totalPages}</span>
             </p>
             <div className="flex gap-2">
                 <Button
@@ -18,6 +18,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
                     size="sm"
                     onClick={() => onPageChange(currentPage - 1)}
                     disabled={currentPage === 1}
+                    className="h-8 px-3"
                 >
                     Previous
                 </Button>
@@ -26,6 +27,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) 
                     size="sm"
                     onClick={() => onPageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
+                    className="h-8 px-3"
                 >
                     Next
                 </Button>
