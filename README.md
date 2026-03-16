@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# 📊 Dashboard Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance dashboard application built with **React 19**, **TypeScript**, and **Vite**, featuring a premium design system powered by **Tailwind CSS 4**.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📦 **Order Management**: Comprehensive orders table with advanced filtering, status tracking, and pagination.
+- 📈 **Stats Dashboard**: Dynamic statistics cards for real-time monitoring of total orders, revenue, and delivery status.
+- 👥 **User Insights**: Dedicated user management view with detailed profile modals and engagement metrics.
+- 🎨 **Premium UI/UX**:
+    - Fully responsive layouts (Desktop, Tablet, Mobile).
+    - Dark mode support.
+    - Glassmorphism effects and smooth micro-animations.
+    - Modern typography using *Geist*.
+- 🛠️ **Developer Experience**: Strictly typed codebase for maximum reliability and scalability.
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Core**: [React 19](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/)
+- **Notifications**: [SweetAlert2](https://sweetalert2.github.io/)
+- **Routing**: [React Router 7](https://reactrouter.com/)
 
-## Expanding the ESLint configuration
+## 🛠️ Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (Latest LTS recommended)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/     # Reusable UI components (Shared, Orders, Users)
+├── lib/            # Utilities and Fake API implementation
+├── pages/          # Top-level page components (Orders, Users, Settings)
+├── types/          # TypeScript interface and type definitions
+├── App.tsx         # Main application routing and layout
+└── index.css       # Global styles and Tailwind configuration
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔧 Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev`: Start development server.
+- `npm run build`: Build for production.
+- `npm run lint`: Run ESLint for code quality.
+- `npm run preview`: Preview production build locally.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+Built with ❤️ for a seamless dashboard experience.
