@@ -3,6 +3,43 @@
 export type UserStatus = 'Active' | 'Inactive';
 export type SortOrder = 'asc' | 'desc';
 
+
+
+export interface NavItem {
+    path: string;
+    icon: string;
+    label: string;
+    title: string;
+}
+
+export interface SidebarProps {
+    isOpen: boolean;
+    isCollapsed: boolean;
+    onClose: () => void;
+}
+
+export interface HeaderProps {
+    toggleSidebar: () => void;
+    isCollapsed: boolean;
+}
+
+
+export interface UserEngagementProps {
+    activeUsers: number;
+    inactiveUsers: number;
+    avgOrdersPerUser: number;
+}
+
+export interface UserWithStats extends User {
+    ordersCount: number;
+    totalSpent: number;
+    role: string;
+}
+
+export interface UsersPageProps { }
+
+
+
 export interface User {
     id: number;
     name: string;
@@ -12,16 +49,6 @@ export interface User {
     imgUrl?: string;
 }
 
-export type OrderStatus = 'Pending' | 'Paid' | 'Cancelled' | 'Delivered';
-
-export interface Order {
-    id: number;
-    userId: number;
-    amount: number;
-    currency: string;
-    status: OrderStatus;
-    createdAt: string;
-}
 
 export interface UsersFilters {
     search: string;
@@ -82,35 +109,49 @@ export interface DashboardMetrics {
 }
 
 
-export interface NavItem {
-    path: string;
-    icon: string;
-    label: string;
-    title: string;
-}
 
-export interface SidebarProps {
-    isOpen: boolean;
-    isCollapsed: boolean;
-    onClose: () => void;
-}
 
-export interface HeaderProps {
-    toggleSidebar: () => void;
-    isCollapsed: boolean;
+export type OrderStatus = 'Pending' | 'Paid' | 'Cancelled' | 'Delivered' | 'Shipped';
+
+export interface Order {
+    id: number;
+    userId: number;
+    amount: number;
+    currency: string;
+    status: OrderStatus;
+    createdAt: string;
 }
 
 
-export interface UserEngagementProps {
-    activeUsers: number;
-    inactiveUsers: number;
-    avgOrdersPerUser: number;
+export interface OrderStats {
+    totalOrders: number;
+    processing: number;
+    shipped: number;
+    delivered: number;
+    cancelled: number;
+    totalRevenue: number;
 }
 
-export interface UserWithStats extends User {
-    ordersCount: number;
-    totalSpent: number;
-    role: string;
+export interface OrderWithDetails extends Order {
+    customerName: string;
+    customerInitials: string;
+    product: string;
 }
 
-export interface UsersPageProps { }
+
+
+
+export interface OrdersFilter {
+    status: OrderStatus | 'All';
+    search: string;
+    page: number;
+    pageSize: number;
+}
+
+export interface OrdersResponse {
+    orders: OrderWithDetails[];
+    total: number;
+    page: number;
+    pageSize: number;
+    totalPages: number;
+}

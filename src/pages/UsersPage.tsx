@@ -8,6 +8,7 @@ import UsersTable from '../components/users/UsersTable';
 import Pagination from '../components/users/Pagination';
 import UserDetailsModal from '../components/users/UserDetailsModal';
 import EditUserModal from '../components/users/EditUserModal';
+import LoadingSpinner from '@/components/ui/loading-spinner';
 
 const PAGE_SIZE = 10;
 
@@ -153,9 +154,7 @@ const UsersPage = () => {
                 />
 
                 {loading ? (
-                    <div className="flex justify-center py-12">
-                        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary"></div>
-                    </div>
+                    <LoadingSpinner size="lg" />
                 ) : (
                     <div className="animate-in fade-in duration-500">
                         <UsersTable

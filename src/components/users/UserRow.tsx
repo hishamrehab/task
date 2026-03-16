@@ -44,8 +44,8 @@ const UserRow = ({ user, onView, onEdit, onDelete }: UserRowProps) => {
                     variant={user.role === 'Premium' ? 'default' : 'secondary'}
                     className={cn(
                         "rounded-lg px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold",
-                        user.role === 'Premium' 
-                            ? 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20' 
+                        user.role === 'Premium'
+                            ? 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20'
                             : 'bg-muted text-muted-foreground'
                     )}
                 >
