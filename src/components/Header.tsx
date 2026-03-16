@@ -45,7 +45,6 @@ const Header = ({ toggleSidebar, isCollapsed }: HeaderProps) => {
                     </span>
                 </button>
 
-                {/* Breadcrumb — hide "Admin >" on very small screens */}
                 <div className="flex items-center gap-1.5 sm:gap-2 text-sm min-w-0">
                     <span className="hidden sm:block text-gray-400 dark:text-slate-600 text-xs flex-shrink-0">Admin</span>
                     <ChevronRight className="hidden sm:block w-4 h-4 text-gray-300 dark:text-slate-700 flex-shrink-0" />
@@ -64,7 +63,7 @@ const Header = ({ toggleSidebar, isCollapsed }: HeaderProps) => {
             {/* ── Right section ── */}
             <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
 
-                {/* Mobile search button (icon only) */}
+                {/* Mobile search button  */}
                 <button
                     onClick={() => setIsSearchOpen(prev => !prev)}
                     className="md:hidden w-9 h-9 flex items-center justify-center rounded-xl text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/8 transition-all"
@@ -73,12 +72,6 @@ const Header = ({ toggleSidebar, isCollapsed }: HeaderProps) => {
                     <Search className="w-5 h-5" />
                 </button>
 
-                {/* Desktop search bar */}
-                <div className="hidden md:flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm cursor-pointer transition-all group border bg-gray-50 dark:bg-white/4 border-gray-200 dark:border-white/8 hover:border-gray-300 dark:hover:border-white/12">
-                    <Search className="w-4 h-4 text-gray-400 dark:text-slate-500 group-hover:text-gray-600 dark:group-hover:text-slate-300 transition-colors flex-shrink-0" />
-                    <span className="text-xs text-gray-500 dark:text-slate-500 hidden lg:block">Search anything...</span>
-                    <span className="hidden xl:block ml-3 text-xs border px-1.5 py-0.5 rounded-md font-mono bg-white dark:bg-white/6 border-gray-200 dark:border-white/10 text-gray-500 dark:text-slate-500">⌘K</span>
-                </div>
 
                 {/* Theme toggle */}
                 <button
