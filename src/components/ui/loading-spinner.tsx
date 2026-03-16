@@ -20,17 +20,8 @@ export const LoadingSpinner = ({
 
     const spinner = (
         <div className={cn("relative", sizeMap[size], className)}>
-            {/* Outer Glow */}
-            <div className="absolute inset-0 rounded-full border-4 border-primary/10 animate-pulse" />
-            
-            {/* Background Circle */}
-            <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
-            
-            {/* Spinning Arc */}
-            <div className="absolute inset-0 rounded-full border-4 border-primary border-t-transparent animate-spin shadow-[0_0_15px_rgba(var(--primary),0.5)]" />
-            
             {/* Inner Gradient Orbit */}
-            <div className="absolute inset-2 rounded-full border-2 border-teal-500/30 border-b-transparent animate-[spin_1.5s_linear_infinite_reverse]" />
+            <div className="absolute inset-2 rounded-full border-3 border-teal-500/30 border-b-transparent animate-[spin_1s_linear_infinite]" />
         </div>
     );
 
